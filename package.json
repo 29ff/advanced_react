@@ -7,7 +7,8 @@
   "author": "29FF <nbhung1809@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "pm2 start ./lib/server.js --watch --interpreter babel-node",
+    "start:dev": "pm2 start ./lib/server.js --watch --interpreter babel-node",
+    "stop:dev": "pm2 stop all",
     "webpack": "webpack -wd",
     "test": "yarn jest"
   },
