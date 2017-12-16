@@ -6,6 +6,9 @@ import { data } from '../../testData'
 // import components
 import ArticleList from '../ArticleList/ArticleList'
 
+// import style
+import './App.scss'
+
 const api = new DataApi(data)
 
 export default class App extends Component {
@@ -19,7 +22,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div id="container">
         <ArticleList
           articles={this.state.articles}
           authors={this.state.authors}

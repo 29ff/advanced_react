@@ -20,6 +20,17 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
+      },
+      {
+        test: /.scss?$/,
+        include: [
+          path.resolve(__dirname, 'lib', 'component')
+        ],
+        exclude: [
+          path.resolve(__dirname, 'node_modules'),
+          path.resolve(__dirname, 'bower_components')
+        ],
+        loader: 'style-loader!css-loader!sass-loader'
       }
     ]
   },
