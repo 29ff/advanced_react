@@ -6,6 +6,7 @@ module.exports = {
      "es6": true,
      "node": true,
      "jest": true,
+     "react": true
    },
    "extends": ["eslint:recommended", "plugin:react/recommended"],
    "parserOptions": {
