@@ -4,8 +4,8 @@ import React from 'react';
 import convertDate from '../../common/convertDate';
 
 const Article = (props) => {
-  const { article, articleAction } = props;
-  const author = articleAction.lookupAuthor(article.authorId);
+  const { article, store } = props;
+  const author = store.lookupAuthor(article.authorId);
   return (
     <div id="article">
       <h3 id="title-article"><strong>{article.title}</strong></h3>

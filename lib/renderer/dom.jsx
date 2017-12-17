@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import App from 'components/App/App'
 
-const initialData = {
-  articles: {},
-  authors: {}
-};
+import StateApi from 'state-api';
+
+const store = new StateApi(window.initialData);
 
 export default ReactDOM.hydrate(
-  <App initialData={initialData} />,
+  <App store={store} />,
   document.getElementById('root')
 );

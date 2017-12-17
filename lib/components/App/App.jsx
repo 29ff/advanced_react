@@ -1,40 +1,21 @@
-import React, { Component } from 'react'
-
-import DataApi from 'state-api'
-import { data } from '../../testData'
+import React, { Component } from 'react';
 
 // import components
-import ArticleList from '../ArticleList/ArticleList'
-
-const api = new DataApi(data)
+import ArticleList from '../ArticleList/ArticleList';
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      articles: api.getArticle(),
-      authors: api.getAuthor(),
-      finishRender: false
+      store: this.props.store
     }
   }
-
-  componentDidMount() {
-    this.setState({
-      finishRender: true
-    })
-  }
-  
-
-  articleAction = {
-    lookupAuthor: authorId => this.state.authors[authorId]
-  };
 
   render() {
     return (
       <div id="container">
         <ArticleList
-            articles={this.state.articles}
-            articleAction={this.articleAction}
+            store={this.state.store}
         />
       </div>
     );
