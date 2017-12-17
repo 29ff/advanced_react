@@ -20,12 +20,16 @@ export default class App extends Component {
     }
   }
 
+  articleAction = {
+    lookupAuthor: authorId => this.state.authors[authorId]
+  };
+
   render() {
     return (
       <div id="container">
         <ArticleList
           articles={this.state.articles}
-          authors={this.state.authors}
+          articleAction={this.articleAction}
         />
       </div>
     );

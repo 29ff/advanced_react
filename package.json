@@ -10,34 +10,37 @@
     "start:dev": "pm2 start ./lib/server.js --watch --interpreter babel-node",
     "stop:dev": "pm2 stop all",
     "webpack": "webpack -wd",
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "test:clean": "rimraf ./coverage",
+    "coverage": "yarn test:clean && yarn jest --coverage"
   },
-  "babel": {
-    "presets": [
-      "react",
-      "env",
-      "stage-2"
-    ]
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/lib/__mocks__/fileMock.js",
+      "\\.(css|less|styl|scss|sass)$": "<rootDir>/lib/__mocks__/styleMock.js"
+    }
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.21.0",
     "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.7",
     "jest": "^21.2.1",
     "node-sass": "^4.7.2",
+    "pm2": "^2.9.1",
+    "react-test-renderer": "^16.2.0",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "moment": "^2.19.4",
-    "pm2": "^2.9.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack": "^3.10.0"

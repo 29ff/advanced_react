@@ -1,10 +1,11 @@
 import React from 'react';
 
 // import components
-import Article from '../Article/Article'
+import Article from '../Article/Article';
 
 const ArticleList = (props) => {
-  const { articles, authors } = props
+  const { articles, articleAction } = props;
+
   return (
     <div>
       {
@@ -12,7 +13,7 @@ const ArticleList = (props) => {
           return <Article
             key={key}
             article={articles[key]}
-            author={authors[articles[key].authorId]}
+            articleAction={articleAction}
           />
         })
       }
