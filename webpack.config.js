@@ -1,38 +1,71 @@
 const path = require('path');
-module.exports = {
-  entry: path.join(__dirname, 'lib', 'components', 'index'),
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+module.exports = [
+  {
+    name: 'jsx',
+    entry: path.resolve(__dirname, 'lib', 'renderer', 'dom'),
+    output: {
+      filename: '[name].js',
+      path: path.resolve(__dirname, 'public')
+    },
+    module: {
+      rules: [
+        {
+          test: /.jsx?$/,
+          include: [
+            path.resolve(__dirname, 'lib')
+          ],
+          exclude: [
+            path.resolve(__dirname, 'node_modules'),
+            path.resolve(__dirname, 'bower_components')
+          ],
+          loader: 'babel-loader?cacheDirectory'
+        }
+      ]
+    },
+    resolve: {
+      extensions: ['.json', '.js', '.jsx'],
+      modules: [
+        path.resolve(__dirname, 'lib'),
+        path.resolve(__dirname, 'node_modules')
+      ]
+    }
   },
-  module: {
-    rules: [
-      {
-        test: /.jsx?$/,
-        include: [
-          path.resolve(__dirname, 'lib', 'components')
-        ],
-        exclude: [
-          path.resolve(__dirname, 'node_modules'),
-          path.resolve(__dirname, 'bower_components')
-        ],
-        loader: 'babel-loader'
-      },
-      {
-        test: /.scss?$/,
-        include: [
-          path.resolve(__dirname, 'lib', 'component')
-        ],
-        exclude: [
-          path.resolve(__dirname, 'node_modules'),
-          path.resolve(__dirname, 'bower_components')
-        ],
-        loader: 'style-loader!css-loader!sass-loader'
-      }
-    ]
-  },
-  resolve: {
-    extensions: ['.json', '.js', '.jsx', '.css']
-  },
-  devtool: 'source-map'
-};
+  {
+    name: 'scss',
+    entry: path.resolve(__dirname, 'lib', 'components', 'sass', 'index'),
+    output: {
+      filename: '[name].js',
+      path: path.resolve(__dirname, 'public')
+    },
+    module: {
+      rules: [
+        {
+          test: /.scss?$/,
+          include: [
+            path.resolve(__dirname, 'lib', 'components', 'sass')
+          ],
+          exclude: [
+            path.resolve(__dirname, 'node_modules'),
+            path.resolve(__dirname, 'bower_components')
+          ],
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
+          })
+        }
+      ]
+    },
+    plugins: [
+      new ExtractTextPlugin({
+        filename: "[name].css",
+        disable: false,
+        allChunks: true
+      })
+    ],
+    resolve: {
+      extensions: ['.css', '.scss']
+    }
+  }
+];

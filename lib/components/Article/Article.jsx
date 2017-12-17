@@ -1,8 +1,5 @@
 import React from 'react';
 
-// import style
-import './Article.scss';
-
 // import common file
 import convertDate from '../../common/convertDate';
 

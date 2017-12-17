@@ -7,9 +7,9 @@
   "author": "29FF <nbhung1809@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:dev": "pm2 start ./lib/server.js --watch --interpreter babel-node",
-    "stop:dev": "pm2 stop all",
-    "webpack": "webpack -wd",
+    "start": "NODE_PATH=./lib pm2 --interpreter babel-node start ./lib/server.js --watch",
+    "stop": "pm2 stop all",
+    "build": "webpack --progress --colors --watch --config webpack.config.js",
     "test": "yarn jest",
     "test:clean": "rimraf ./coverage",
     "coverage": "yarn test:clean && yarn jest --coverage"
@@ -29,6 +29,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
     "jest": "^21.2.1",
     "node-sass": "^4.7.2",
     "pm2": "^2.9.1",

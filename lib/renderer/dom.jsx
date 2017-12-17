@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import App from './App/App'
+import App from 'components/App/App'
 
-ReactDOM.render(
+export default ReactDOM.hydrate(
   <App />,
   document.getElementById('root')
 );
