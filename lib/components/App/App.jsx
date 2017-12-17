@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import DataApi from '../../DataApi'
+import DataApi from 'state-api'
 import { data } from '../../testData'
 
 // import components
