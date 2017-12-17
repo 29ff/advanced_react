@@ -39,6 +39,7 @@
     "style-loader": "^0.19.1"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "moment": "^2.19.4",

@@ -7,9 +7,12 @@
   <link rel="shortcut icon" href="/favicon.png"/>
   <link rel="stylesheet" href="/main.css" />
   <title>Advanced React and Express application</title>
+  <script type="text/javascript">
+    window.initialData = <%- JSON.stringify(initialData) -%>
+  </script>
 </head>
 <body>
-  <div id="root"><%- initialContent -%></div>
+  <div id="root"><%- initialMarkup -%></div>
   <script src="/main.js"></script>
 </body>
 </html>
