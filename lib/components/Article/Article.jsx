@@ -6,8 +6,7 @@ import storeProvider from '../storeProvider';
 import convertDate from '../../common/convertDate';
 
 const Article = (props) => {
-  const { article, store } = props;
-  const author = store.lookupAuthor(article.authorId);
+  const { article, author } = props;
   return (
     <div id="article">
       <h3 id="title-article"><strong>{article.title}</strong></h3>
@@ -31,4 +30,10 @@ Article.propTypes = {
   })
 }
 
-export default storeProvider(Article);
+function extraProps(store, originalProps) {
+  return {
+    author: store.lookupAuthor(originalProps.article.authorId)
+  };
+}
+
+export default storeProvider(extraProps)(Article);
