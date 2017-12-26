@@ -1,3 +1,5 @@
 # Advanced React.js
 Build a application with React.js, Node and Express server
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
+[![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
+[travis-url]: http://travis-ci.org/mikaelbr/node-notifier
+[travis-image]: http://img.shields.io/travis/mikaelbr/node-notifier.svg?style=flat
