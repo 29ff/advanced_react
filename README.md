@@ -1,6 +1,5 @@
-## Advanced React.js
+## Advanced React.js [![Build Status][travis-image]][travis-url]
 Build a application with [React.js](https://reactjs.org), [Node](https://nodejs.org/en/) and [Express](expressjs.com) server
-[![Build Status][travis-image]][travis-url]
 
 ## License
 
