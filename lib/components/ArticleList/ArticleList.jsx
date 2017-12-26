@@ -4,8 +4,7 @@ import React from 'react';
 import Article from '../Article/Article';
 
 const ArticleList = (props) => {
-  const { store } = props;
-  const articles = store.getState().articles;
+  const { articles } = props;
   return (
     <div>
       {
@@ -13,7 +12,6 @@ const ArticleList = (props) => {
           return <Article
             key={key}
             article={articles[key]}
-            store={store}
           />
         })
       }

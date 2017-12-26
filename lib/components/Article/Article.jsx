@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import storeProvider from '../storeProvider';
 
 // import common file
 import convertDate from '../../common/convertDate';
@@ -21,4 +23,12 @@ const Article = (props) => {
   );
 };
 
-export default Article;
+Article.propTypes = {
+  article: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired
+  })
+}
+
+export default storeProvider(Article);
