@@ -5,5 +5,5 @@ Build a application with [React.js](https://reactjs.org), [Node](https://nodejs.
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
-[travis-url]: http://travis-ci.org/mikaelbr/node-notifier
-[travis-image]: http://img.shields.io/travis/mikaelbr/node-notifier.svg?style=flat
+[travis-url]: https://travis-ci.org/29ff/advanced_react
+[travis-image]: https://travis-ci.org/29ff/advanced_react.svg?branch=master
