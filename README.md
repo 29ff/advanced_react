@@ -1,4 +1,5 @@
 ## Advanced React.js
+`Build a application with React.js, Node and Express server`
 [![Build Status][travis-image]][travis-url]
 
 ## License
