@@ -1,5 +1,5 @@
 ## Advanced React.js
-`Build a application with React.js, Node and Express server`
+Build a application with [React.js](https://reactjs.org), [Node](https://nodejs.org/en/) and [Express](expressjs.com) server
 [![Build Status][travis-image]][travis-url]
 
 ## License
