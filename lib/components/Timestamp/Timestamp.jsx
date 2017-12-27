@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import storeProvider from '../storeProvider'
 
-class TimeStamp extends Component {
+class TimeStamp extends PureComponent {
   render() {
     return (
       <div>
