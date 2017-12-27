@@ -7,13 +7,12 @@
   "author": "29FF <nbhung1809@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_PATH=./lib pm2 --interpreter babel-node start ./lib/server.js --watch",
+    "start": "NODE_PATH=./lib pm2 --interpreter babel-node start ./lib/server.js --watch && pm2 logs",
     "stop": "pm2 stop all",
     "build": "webpack --progress --colors --watch --config webpack.config.js",
     "test": "NODE_PATH=./lib yarn jest",
     "test:clean": "rimraf ./coverage",
-    "coverage": "yarn test:clean && yarn jest --coverage",
-    "logs": "yarn pm2 logs"
+    "coverage": "yarn test:clean && yarn jest --coverage"
   },
   "jest": {
     "moduleNameMapper": {
