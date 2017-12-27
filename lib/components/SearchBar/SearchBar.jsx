@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import debounce from 'lodash.debounce'
+import storeProvider from '../storeProvider'
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,11 +11,11 @@ export default class SearchBar extends Component {
   }
 
   doSearch = debounce(() => {
-    this.props.doSearch(this.state.searchTerm)
+    this.props.store.setSearchTerm(this.state.searchTerm)
   }, 300)
 
   handleChange = (event) => {
-    this.setState({ searchTerm: event.target.value}, () => {
+    this.setState({ searchTerm: event.target.value }, () => {
       this.doSearch()
     })
   }
@@ -31,3 +32,5 @@ export default class SearchBar extends Component {
     )
   }
 }
+
+export default storeProvider()(SearchBar)
