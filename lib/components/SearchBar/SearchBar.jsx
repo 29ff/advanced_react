@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import debounce from 'lodash.debounce';
+import React, { Component } from 'react'
+import debounce from 'lodash.debounce'
 
 export default class SearchBar extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       searchTerm: ''
     }
   }
 
   doSearch = debounce(() => {
-    this.props.doSearch(this.state.searchTerm);
+    this.props.doSearch(this.state.searchTerm)
   }, 300)
 
   handleChange = (event) => {
     this.setState({ searchTerm: event.target.value}, () => {
-      this.doSearch();
+      this.doSearch()
     })
   }
 

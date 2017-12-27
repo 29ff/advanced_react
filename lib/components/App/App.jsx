@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import pickBy from 'lodash.pickby';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import pickBy from 'lodash.pickby'
 
 // import components
-import ArticleList from '../ArticleList/ArticleList';
-import SearchBar from '../SearchBar/SearchBar';
+import ArticleList from '../ArticleList/ArticleList'
+import SearchBar from '../SearchBar/SearchBar'
 
 export default class App extends Component {
   static childContextTypes = {
@@ -17,20 +17,23 @@ export default class App extends Component {
     }
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      store: this.props.store,
-      articles: this.props.store.getState().articles
-    }
+  state = this.props.store.getState()
+
+  onStoreChange = () => {
+    this.setState(this.props.store.getState())
   }
 
-  setSearchTerm = (searchTerm) => {
-    this.setState({ searchTerm });
+  componentDidMount() {
+    this.subcriptionId = this.props.store.subscribe(this.onStoreChange)
   }
+
+  componentWillUnmount = () => {
+    this.props.store.unsubscribe(this.subcriptionId)
+  }
+
 
   render() {
-    let { articles, searchTerm } = this.state;
+    let { articles, searchTerm } = this.state
     if (searchTerm) {
       articles = pickBy(articles, (value) => {
         return value.title.match(searchTerm) || value.body.match(searchTerm)
@@ -38,7 +41,7 @@ export default class App extends Component {
     }
     return (
       <div id="container">
-        <SearchBar doSearch={this.setSearchTerm}/>
+        <SearchBar doSearch={this.props.store.setSearchTerm}/>
         {
           (Object.keys(articles).length) ?
           <ArticleList
@@ -47,6 +50,6 @@ export default class App extends Component {
           <div id="search-no-result">No article was found!</div>
         }
       </div>
-    );
+    )
   }
 }
