@@ -25,26 +25,27 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.subcriptionId = this.props.store.subscribe(this.onStoreChange)
+    this.subscriptionId = this.props.store.subscribe(this.onStoreChange)
     this.props.store.startClock()
   }
 
   componentWillUnmount = () => {
-    this.props.store.unsubscribe(this.subcriptionId)
+    this.props.store.unsubscribe(this.subscriptionId)
   }
 
 
   render() {
     let { articles, searchTerm } = this.state
+    const searchByReg = new RegExp(searchTerm, 'i')
     if (searchTerm) {
       articles = pickBy(articles, (value) => {
-        return value.title.match(searchTerm) || value.body.match(searchTerm)
+        return value.title.match(searchByReg) || value.body.match(searchByReg)
       })
     }
     return (
       <div id="container">
         <TimeStamp />
-        <SearchBar doSearch={this.props.store.setSearchTerm}/>
+        <SearchBar />
         {
           (Object.keys(articles).length) ?
           <ArticleList
