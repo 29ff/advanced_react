@@ -12,7 +12,7 @@ const Article = (props) => {
       <h3 id="title-article"><strong>{article.title}</strong></h3>
       <div id="date-article"><strong>{convertDate(article.date)}</strong></div>
       <div id="author-article">
-        Author:&nbsp
+        Author:&nbsp;
         <a href={author.website} target="_blank">
           <em>{author.firstName} {author.lastName}</em>
         </a>

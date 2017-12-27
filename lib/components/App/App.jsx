@@ -5,6 +5,7 @@ import pickBy from 'lodash.pickby'
 // import components
 import ArticleList from '../ArticleList/ArticleList'
 import SearchBar from '../SearchBar/SearchBar'
+import TimeStamp from '../Timestamp/Timestamp'
 
 export default class App extends Component {
   static childContextTypes = {
@@ -25,6 +26,7 @@ export default class App extends Component {
 
   componentDidMount() {
     this.subcriptionId = this.props.store.subscribe(this.onStoreChange)
+    this.props.store.startClock()
   }
 
   componentWillUnmount = () => {
@@ -41,6 +43,7 @@ export default class App extends Component {
     }
     return (
       <div id="container">
+        <TimeStamp />
         <SearchBar doSearch={this.props.store.setSearchTerm}/>
         {
           (Object.keys(articles).length) ?
