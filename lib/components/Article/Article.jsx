@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import storeProvider from '../storeProvider';
 
 // import common file
-import convertDate from '../../common/convertDate';
+import convertDate from 'common/convertDate';
 
 const Article = (props) => {
   const { article, author } = props;
