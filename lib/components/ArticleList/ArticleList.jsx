@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 // import components
-import Article from '../Article/Article';
+import Article from '../Article/Article'
 
 const ArticleList = (props) => {
-  const { articles } = props;
+  const { articles } = props
   return (
     <div>
       {
@@ -16,7 +16,7 @@ const ArticleList = (props) => {
         })
       }
     </div>
-  );
-};
+  )
+}
 
-export default ArticleList;
+export default ArticleList
