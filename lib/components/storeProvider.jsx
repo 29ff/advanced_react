@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 const storeProvider = (extraProps = () => ({})) => (Component) => {
-  return class extends React.PureComponent {
+  return class extends PureComponent {
     static displayName = `${Component.name}Container`;
     static contextTypes = {
       store: PropTypes.object

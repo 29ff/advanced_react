@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import pickBy from 'lodash.pickby'
 
@@ -7,7 +7,7 @@ import ArticleList from '../ArticleList/ArticleList'
 import SearchBar from '../SearchBar/SearchBar'
 import TimeStamp from '../Timestamp/Timestamp'
 
-export default class App extends Component {
+export default class App extends PureComponent {
   static childContextTypes = {
     store: PropTypes.object
   }
@@ -29,7 +29,7 @@ export default class App extends Component {
     this.props.store.startClock()
   }
 
-  componentWillUnmount = () => {
+  componentWillUnmount() {
     this.props.store.unsubscribe(this.subscriptionId)
   }
 
