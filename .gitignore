@@ -58,6 +58,10 @@ typings/
 # dotenv environment variables file
 .env
 
-# Build webpack
+# Build webpack development
 public/main.js
+
+# Build webpack production
+public/vendor.js
+public/app.js
 public/main.css
