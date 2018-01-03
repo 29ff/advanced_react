@@ -9,8 +9,9 @@
   "scripts": {
     "start": "NODE_PATH=./lib pm2 --interpreter babel-node start ./lib/server.js --watch && pm2 logs",
     "stop": "pm2 stop all",
-    "build:dev": "webpack --progress --colors --watch --config webpack.config.dev.js",
-    "build:prod": "webpack --progress --colors --config webpack.config.prod.js",
+    "reload": "pm2 reload all && pm2 logs",
+    "build:dev": "rm -rf ./public/*.js && rm -rf ./public/*css && webpack --progress --colors --watch --config webpack.config.dev.js",
+    "build:prod": "rm -rf ./public/*.js && rm -rf ./public/*css && webpack --progress --colors --config webpack.config.prod.js",
     "test": "NODE_PATH=./lib jest",
     "test:clean": "rimraf ./coverage",
     "coverage": "yarn test:clean && NODE_PATH=./lib jest --coverage"
