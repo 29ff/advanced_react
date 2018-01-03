@@ -9,10 +9,11 @@
   "scripts": {
     "start": "NODE_PATH=./lib pm2 --interpreter babel-node start ./lib/server.js --watch && pm2 logs",
     "stop": "pm2 stop all",
-    "build": "webpack --progress --colors --watch --config webpack.config.js",
-    "test": "NODE_PATH=./lib yarn jest",
+    "build:dev": "webpack --progress --colors --watch --config webpack.config.dev.js",
+    "build:prod": "webpack --progress --colors --config webpack.config.prod.js",
+    "test": "NODE_PATH=./lib jest",
     "test:clean": "rimraf ./coverage",
-    "coverage": "yarn test:clean && yarn jest --coverage"
+    "coverage": "yarn test:clean && NODE_PATH=./lib jest --coverage"
   },
   "jest": {
     "moduleNameMapper": {
