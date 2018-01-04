@@ -5,4 +5,4 @@ npm run build:prod
 npm run build:server
 
 ## Start server
-npm run start:prod
+npm run start
