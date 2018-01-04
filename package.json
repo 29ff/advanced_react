@@ -2,13 +2,16 @@
   "name": "advanced_react",
   "version": "1.0.0",
   "description": "Advanced React",
-  "main": "lib/server.js",
+  "main": "build/server.js",
   "repository": "git@github.com:29ff/advanced_react.git",
   "author": "29FF <nbhung1809@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "6.12.2"
+  },
   "scripts": {
-    "start": "NODE_PATH=./lib pm2 --interpreter babel-node start ./lib/server.js --watch --name appDev && pm2 logs",
-    "start:prod": "NODE_ENV=production NODE_PATH=./build pm2 start build/server.js -i max --name appProd",
+    "start:dev": "NODE_PATH=./lib pm2 --interpreter babel-node start ./lib/server.js --watch --name appDev && pm2 logs",
+    "start": "NODE_ENV=production NODE_PATH=./build pm2 start build/server.js -i max --name appProd",
     "stop": "pm2 stop all",
     "reload": "pm2 reload all && pm2 logs",
     "build:dev": "rm -rf ./public/*.js && rm -rf ./public/*css && webpack -d --progress --colors --watch --config webpack.config.dev.js",
