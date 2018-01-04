@@ -4,6 +4,7 @@ node_js:
 script:
   - npm run test
   - npm run coverage
+  - source ./deploy-heroku.sh
 cache:
   yarn: true
   directories:
