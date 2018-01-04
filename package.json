@@ -7,7 +7,7 @@
   "author": "29FF <nbhung1809@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "6.12.2"
+    "node": "6.12.3"
   },
   "scripts": {
     "start:dev": "NODE_PATH=./lib pm2 --interpreter babel-node start ./lib/server.js --watch --name appDev && pm2 logs",
