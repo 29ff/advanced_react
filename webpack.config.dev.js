@@ -4,7 +4,19 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = [
   {
     name: 'jsx',
-    entry: ['babel-polyfill', path.resolve(__dirname, 'lib', 'renderer', 'dom')],
+    entry: {
+      vendor: [
+        'babel-polyfill',
+        'react',
+        'react-dom',
+        'prop-types',
+        'axios',
+        'lodash.debounce',
+        'lodash.pickby',
+        'moment'
+      ],
+      main: [path.resolve(__dirname, 'lib', 'renderer', 'dom')]
+    },
     output: {
       filename: '[name].js',
       path: path.resolve(__dirname, 'public')

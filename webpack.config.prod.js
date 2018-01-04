@@ -16,7 +16,7 @@ module.exports = [
         'lodash.pickby',
         'moment'
       ],
-      app: [path.resolve(__dirname, 'lib', 'renderer', 'dom')]
+      main: [path.resolve(__dirname, 'lib', 'renderer', 'dom')]
     },
     output: {
       filename: '[name].js',
@@ -26,31 +26,42 @@ module.exports = [
       rules: [
         {
           test: /.jsx?$/,
-          include: [
-            path.resolve(__dirname, 'lib')
-          ],
+          include: [path.resolve(__dirname, 'lib')],
           exclude: [
             path.resolve(__dirname, 'node_modules'),
             path.resolve(__dirname, 'bower_components')
           ],
-          loader: 'babel-loader?cacheDirectory'
+          use: {
+            loader: 'babel-loader?cacheDirectory',
+            options: {
+              presets: ['react', 'env', 'stage-2']
+            }
+          }
         }
       ]
     },
     resolve: {
-      extensions: ['.json', '.js', '.jsx'],
+      extensions: [
+        '.json', '.js', '.jsx'
+      ],
       modules: [
         path.resolve(__dirname, 'lib'),
         path.resolve(__dirname, 'node_modules')
       ]
     },
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor'
-      })
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+          comments: false,
+          compressor: {
+            warnings: false
+          }
+        }),
+      new webpack.optimize.CommonsChunkPlugin({name: 'vendor'})
     ]
-  },
-  {
+  }, {
     name: 'scss',
     entry: path.resolve(__dirname, 'lib', 'components', 'sass', 'index'),
     output: {
@@ -61,9 +72,7 @@ module.exports = [
       rules: [
         {
           test: /.scss?$/,
-          include: [
-            path.resolve(__dirname, 'lib', 'components', 'sass')
-          ],
+          include: [path.resolve(__dirname, 'lib', 'components', 'sass')],
           exclude: [
             path.resolve(__dirname, 'node_modules'),
             path.resolve(__dirname, 'bower_components')
@@ -75,13 +84,7 @@ module.exports = [
         }
       ]
     },
-    plugins: [
-      new ExtractTextPlugin({
-        filename: "[name].css",
-        disable: false,
-        allChunks: true
-      })
-    ],
+    plugins: [new ExtractTextPlugin({filename: "[name].css", disable: false, allChunks: true})],
     resolve: {
       extensions: ['.css', '.scss']
     }
