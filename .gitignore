@@ -65,3 +65,6 @@ public/main.js
 public/vendor.js
 public/app.js
 public/main.css
+
+# Build folder
+build

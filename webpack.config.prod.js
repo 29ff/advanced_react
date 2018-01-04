@@ -31,7 +31,12 @@ module.exports = [
             path.resolve(__dirname, 'node_modules'),
             path.resolve(__dirname, 'bower_components')
           ],
-          loader: 'babel-loader?cacheDirectory'
+          use: {
+            loader: 'babel-loader?cacheDirectory',
+            options: {
+              presets: ['react', 'env', 'stage-2']
+            }
+          }
         }
       ]
     },
